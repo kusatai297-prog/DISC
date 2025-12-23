@@ -1,0 +1,3 @@
+DISC.pyはバックエンドのメインとなるファイルです。基本的にはこのファイルを実行すればバックエンドはOKです。question.pyはDISC.pyの補助的なファイルでDISC.pyはこれをimportして用いています。
+appにはフロントエンドのファイルが入っています。app直下に入っているpage.tsxはメインの質問が並んだページについてのファイルでこれを動かし、指定されたurlに飛べばページが見れます
+DISC.pyはuvicorn DISC:app --reloadで実行でき、page.tsxはnpm run devで実行できます。
