@@ -44,7 +44,6 @@ DISCタイプ（D / I / S / C）のうち、どのタイプであるかを診断
 cd api
 pip install -r requirements.txt
 uvicorn DISC:app --reload
-# http://localhost:8000
 ```
 
 ### フロントエンド
@@ -53,6 +52,5 @@ uvicorn DISC:app --reload
 cd app
 npm install
 npm run dev
-# http://localhost:3000
 ```
 
