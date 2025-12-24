@@ -42,7 +42,6 @@ DISCタイプ（D / I / S / C）のうち、どのタイプであるかを診断
 
 ```bash
 cd api
-pip install -r requirements.txt
 uvicorn DISC:app --reload
 ```
 
@@ -50,7 +49,6 @@ uvicorn DISC:app --reload
 
 ```bash
 cd app
-npm install
 npm run dev
 ```
 
