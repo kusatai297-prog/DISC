@@ -7,8 +7,8 @@ DISCタイプ（D / I / S / C）のうち、どのタイプであるかを診断
 ## 概要
 
 フロントエンドは Next.js（TypeScript）、バックエンドは FastAPI（Python）で実装されています。質問画面の表示と回答送信をフロントエンドが担当し、質問データの管理と診断ロジックの処理をバックエンドが担当します。
-![質問画面](./images/example_1)
-![resultページ](./images/example_2)
+![質問画面](https://github.com/kusatai297-prog/DISC/blob/main/images/example_1.png)
+![resultページ](https://github.com/kusatai297-prog/DISC/blob/main/images/example_2.png)
 
 ---
 
