@@ -1,1 +1,33 @@
-node_modules/ 
+# Python 仮想環境
+venv/
+
+# Python キャッシュ
+__pycache__/
+*.pyc
+
+#依存関係
+/node_modules
+
+#テスト
+/coverage
+
+#本番
+/build
+
+#next.js
+/.next/
+/out/
+
+#ローカル環境ファイル
+.env*.local
+.env
+
+#デバッグ
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+#typescript
+*.tsbuildinfo
+next-env.d.ts
