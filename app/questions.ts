@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export const question = [
     {number:1,content:"機械や道具を扱うことが得意だと思う。",type:"D",answer:0},
     {number:2,content:"体を動かす仕事が好きだ。",type:"D",answer:0},
@@ -86,4 +85,4 @@ export const question = [
     {number:40,content:"想像したことを形にするのが好きだ。",type:"C",answer:0}
     ];
 
->>>>>>> efcc51bbbaa62103f2b0262d38e56acf846d5624
+
