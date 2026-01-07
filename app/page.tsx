@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import { question } from './questions';
 import { useRouter } from "next/navigation";
 
-
-
 const Card = ({ question, selected, onSelect }) => {
   return (
     <div className="card py-10">
@@ -16,12 +14,16 @@ const Card = ({ question, selected, onSelect }) => {
       <div className="card-answer text-center space-x-4">
         {[1,2,3,4,5].map((num) => (
           <button
-            key={num}
-            onClick={() => onSelect(num)}
-            className="border border-gray-400 px-8 py-6 rounded hover:bg-gray-100 active:scale-95"
-            style={{ backgroundColor: selected === num ? 'lightblue' : 'white' }}
+              key={num}
+              onClick={() => onSelect(num)}
+              className={`
+                w-20 h-20 text-2xl font-semibold
+                border border-gray-400 rounded-xl
+                transition
+                ${selected === num ? "bg-blue-300 text-black" : "bg-white text-black"}
+            `}
           >
-            {num}
+          {num}
           </button>
         ))}
       </div>
