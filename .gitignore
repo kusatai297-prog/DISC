@@ -6,13 +6,13 @@ __pycache__/
 *.pyc
 
 #依存関係
-/node_modules
+node_modules/
 
 #テスト
 /coverage
 
 #本番
-/build
+/build/
 
 #next.js
 /.next/
