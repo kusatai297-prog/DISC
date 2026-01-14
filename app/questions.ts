@@ -40,4 +40,3 @@ export const question = [
     {number:39,content:"型にはまったルールは苦手だ。",type:"C",answer:0},
     {number:40,content:"想像したことを形にするのが好きだ。",type:"C",answer:0}
     ];
-
