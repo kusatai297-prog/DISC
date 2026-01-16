@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { question } from './questions';
+import { question } from '@/lib/questions';
 import { useRouter } from "next/navigation";
 
 const Card = ({ question, selected, onSelect }) => {
