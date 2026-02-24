@@ -16,41 +16,52 @@ DISCタイプ（D / I / S / C）のうち、どのタイプであるかを診断
 
 ```
 .
-├── api
-│   ├── DISC.py
-│   └── question.py
-├── app
-│   ├── page.tsx
+├── backend
+│   ├── api
+|   |    ├── main.py
+|   |    └── question.py
+│   ├── tests ── test_backend_DISC.py
+|   └── Dockerfile
+├── frontend
+│   ├── app 
+|   |    ├── page.tsx
+|   |    └── result ── [type] 
+|   |                    ├── page.tsx
+|   |                    ├── ErrorView.tsx
+|   |                    └── ResultView.tsx
+|   ├── components
+|   |       ├── Question.tsx
+|   |       └── RatingButton.tsx
+|   ├── hooks ── useDiagnosis.tsx
+|   ├── lib ── postAnswers.tsx
+|   ├── Dockerfile
 │   └── package.json
-└── README.md
+|── README.md
+|
+|
+└── docker-compose.yml
 ```
 
 ---
 
-## ファイル説明
-
-### api
-- DISC.py：FastAPI を用いたバックエンドのメインファイル
-- question.py：DISC.py から import される補助ファイル
-
-### app
-- page.tsx：質問画面を表示する Next.js のページ
 
 ---
 
-## 実行方法
-
-### バックエンド
+###  バックエンド起動
 
 ```bash
-cd api
-uvicorn DISC:app --reload
-```
+cd backend/api
+uvicorn main:app --reload
 
-### フロントエンド
 
-```bash
-cd app
+###　フロントエンド起動
+cd frontend
+npm install
 npm run dev
-```
 
+### Dockerで起動する場合
+docker-compose up --build
+
+###　テスト
+cd backend
+pytest
