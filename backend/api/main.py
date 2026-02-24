@@ -1,11 +1,19 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel , Field
-import question
+from . import question
 from fastapi.middleware.cors import CORSMiddleware
 import copy
 
 
 app = FastAPI()
+
+#エラー用関数
+def raise_bad_request(message: str):
+    raise HTTPException(
+        status_code = status.HTTP_400_BAD_REQUEST,
+        detail = {"status":"error","message":message}
+    )
+
 
 
 app.add_middleware(
@@ -17,16 +25,54 @@ app.add_middleware(
 )
 
 #クラスの定義
-class person(BaseModel):
-    result_R : int
-    result_I : int
-    result_S : int
-    result_C : int
-    result : str
-    state : bool
+class SingleAnswer(BaseModel):
+    number: int = Field(...,gt=0, description = "質問番号は1以上")
+    answer: int = Field(...,ge=0, le=5 ,description = "回答は0-5の間")
 
-class Answers(BaseModel):
-    answers : list[question.ans]
+class Answer(BaseModel):
+    answers: list[SingleAnswer]
+
+#データマッピング関数
+def apply_answers(raw_questions, user_answers: list[SingleAnswer]):
+    processed_data = copy.deepcopy(raw_questions)
+    ans_map = {a.number: a.answer for a in user_answers}
+
+    max_len = len(processed_data)
+
+    for q in processed_data:
+        if q.number in ans_map:
+            q.answer = ans_map[q.number]
+        else:
+            pass
+    
+    if any(k>max_len for k in ans_map):
+        raise_bad_request("存在しない質問番号が含まれています")
+    
+    return processed_data
+
+#すべての質問に回答しているかの確認
+def validate_completeness(processed_data):
+    for q in processed_data:
+        val = getattr(q,"answer",None)
+        
+        if val is None :
+            raise_bad_request("システムエラー:回答データが破損しています")
+        
+        if val == 0 :
+            raise_bad_request("すべての質問に回答してください")
+        
+    return processed_data
+
+#計算用関数
+def calculate_score(processed_data):
+    scores = {"R": 0, "I": 0, "S": 0, "C": 0}
+    for q in processed_data:
+        val = getattr(q, "answer", 0)
+        if hasattr(q, "type") and q.type in scores:
+            scores[q.type] += val
+    return scores
+
+
 
 #すべての質問の表示
 @app.get("/questions")
@@ -41,53 +87,14 @@ def get_questions():
     return questions
 
     
-#点数計算ループ
+#メイン処理
 @app.post("/answers")
-def get_answer(data:Answers):
-    #必要な変数の定義
-    p=person(result_R = 0,result_C = 0,result_I = 0,result_S = 0,state = False,result = "")
-    all_answered = True                                             
+def get_answer(data:Answer):
+    filled_questions = apply_answers(question.question_data, data.answers)
 
-    answer_result = copy.deepcopy(question.question_data)
+    validate_completeness(filled_questions)
 
-    for ans in data.answers:
-        answer_result[ans.number-1].answer = ans.answer
-        
-    #点数計算、解答確認ループ
-    for i in  (answer_result):
-        if p.result == "R":
-            return {"status":"success","type":"R"}
-        elif p.result == "I":
-            return {"status":"success","type":"I"}
-        elif p.result == "S":
-            return {"status":"success","type":"S"}
-        elif p.result == "C":
-            return {"status":"success","type":"C"}
-        
-    if not all_answered:
-        return {
-            "status": "error",
-            "message": "You have to answer all question"
-        }
+    final_scores = calculate_score(filled_questions)
 
-
-
-    p.state = all_answered
-    #タイプ判定
-    scores = {
-        "R" : p.result_R,
-        "I" : p.result_I,
-        "S" : p.result_S,
-        "C" : p.result_C
-    }
-    if p.state == True:
-        p.result = max(scores, key = scores.get)
-        if p.result == "R":
-            return {"status":"ok","type":"R"}
-        if p.result == "I":
-            return {"status":"ok","type":"I"}
-        if p.result == "S":
-            return {"status":"ok","type":"S"}
-        if p.result == "C":
-            return {"status":"ok","type":"C"}
-    return {"status":"success","type":p.result}
+    result_type = max(final_scores, key=final_scores.get)
+    return {"status": "success", "type": result_type}

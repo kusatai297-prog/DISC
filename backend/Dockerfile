@@ -1,15 +1,16 @@
-# 1. 使うOS + Python
+# Python + slim イメージ
 FROM python:3.11-slim
 
-# 2. 作業ディレクトリ
+# 作業ディレクトリ
 WORKDIR /app
 
-# 3. 依存関係をコピーしてインストール
-COPY ../requirements.txt .
+# 依存関係をコピーしてインストール
+RUN pip install --upgrade pip
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 4. プロジェクトをコピー
-COPY ./backend /app/backend
+# プロジェクト全体をコピー
+COPY . /app
 
-# 5. FastAPI を起動
-CMD ["uvicorn", "backend.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# FastAPI 起動
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]

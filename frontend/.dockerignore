@@ -1,0 +1,18 @@
+# Node / Next.js
+node_modules
+.next
+out
+build
+coverage
+
+# 環境変数
+.env
+.env*.local
+
+# ログ
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo

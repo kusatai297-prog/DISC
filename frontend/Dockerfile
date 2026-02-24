@@ -1,14 +1,14 @@
-# Node.js の軽量 Alpine イメージを使用
-FROM node:20-alpine
+# Node.js + Bullseye
+FROM node:20-bullseye
 
 WORKDIR /app
 
-# 依存関係をコピーしてインストール
-COPY ../package*.json ./
+# package.json と package-lock.json を先にコピーして依存をインストール
+COPY package*.json ./
 RUN npm install
 
 # プロジェクト全体をコピー
-COPY ./frontend /app
+COPY . .
 
-# Next.js を開発モードで起動
+# Next.js 開発サーバー起動
 CMD ["npm", "run", "dev"]
