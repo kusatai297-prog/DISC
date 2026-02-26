@@ -1,12 +1,17 @@
 # Python 仮想環境
 venv/
 
+# Node
+node_modules/
+.next/
+
 # Python キャッシュ
 __pycache__/
 *.pyc
 
-#依存関係
+# root
 /node_modules
+/.next
 
 #テスト
 /coverage
@@ -15,7 +20,6 @@ __pycache__/
 /build
 
 #next.js
-/.next/
 /out/
 
 #ローカル環境ファイル
@@ -31,3 +35,6 @@ yarn-error.log*
 #typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# OS
+.DS_Storedir .gitignore
