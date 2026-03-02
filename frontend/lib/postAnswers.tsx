@@ -13,10 +13,7 @@ export const postAnswers = async(
     });
 
     const data = await res.json();
-    console.log("API_URL:", API_URL);
-
-    console.log("HTTPステータス:", res.status);
-    console.log("Backendレスポンス:", data);
+    
 
 
     if (!res.ok){

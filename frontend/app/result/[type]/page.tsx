@@ -10,7 +10,7 @@ export default async function ResultPage({
   params: Promise<{ type?: string }>
 }) {
 
-  const { type } = await params   // ← ここが重要
+  const { type } = await params  
 
   if (!type || !(type in RISC_TYPES)) {
     return <ErrorView type={type ?? "undefined"} />
