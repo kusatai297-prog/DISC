@@ -1,6 +1,6 @@
 export const RISC_TYPES = {
-R: {
-    name:"Rタイプ",
+D: {
+    name:"Dタイプ",
     description:"モノや機械、体を動かす実践的なものを好む傾向があります。",
     trait: "具体的、実際的な仕事が得意です。",
     jobs : [{

@@ -1,12 +1,12 @@
-import{useState} from 'react';
-import{useRouter}from 'next/navigation';
+import{ useState } from 'react';
+import{ useRouter }from 'next/navigation';
 import { postAnswers } from "@/lib/postAnswers";
 
 
 export const useDiagnosis = (questionCount: number) => {
     const router = useRouter();
     const [answer, setAnswers] = useState<number[]>(Array(questionCount).fill(0))
-const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 //行列の作成
 const handleSelect = (index:number, value: number) => {
     const newAnswers = [...answer];
@@ -15,7 +15,7 @@ const handleSelect = (index:number, value: number) => {
 };
 //解答不足の確認
 const validate = () =>{
-    return !answer.some((ans => ans ===0));
+    return !answer.some((ans => ans === 0));
 };
 //行列の成形
 const buildPayload = () => {
@@ -46,7 +46,7 @@ const submit = async () => {
     setIsSubmitting(false);
     }
     };
-    return{
+    return {
         answer,
         handleSelect,
         submit,

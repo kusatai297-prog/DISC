@@ -65,7 +65,7 @@ def validate_completeness(processed_data):
 
 #計算用関数
 def calculate_score(processed_data):
-    scores = {"R": 0, "I": 0, "S": 0, "C": 0}
+    scores = {"D": 0, "I": 0, "S": 0, "C": 0}
     for q in processed_data:
         val = getattr(q, "answer", 0)
         if hasattr(q, "type") and q.type in scores:

@@ -47,21 +47,31 @@ DISCタイプ（D / I / S / C）のうち、どのタイプであるかを診断
 
 ---
 
-###  バックエンド起動
+## 起動方法
+
+
+### Dockerで起動する場合(推奨)
+```bash
+docker-compose up --build
+```
+
+### バックエンド起動
 
 ```bash
-cd backend/api
-uvicorn main:app --reload
+cd backend
+pip install -r requirements.txt
+uvicorn api.main:app --reload
+```
 
-
-###　フロントエンド起動
+### フロントエンド起動
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
-### Dockerで起動する場合
-docker-compose up --build
-
-###　テスト
+### テスト
+```bash
 cd backend
 pytest
+```

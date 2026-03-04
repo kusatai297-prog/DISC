@@ -1,11 +1,19 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+type AnswerPayload = {
+    answers: {
+        number : number;
+        answer : number;
+    }[]
+};
+
 type AnswerResponse = {
     status: string;
-    type: "R" | "I" | "S" | "C";
+    type: "D" | "I" | "S" | "C";
 };
 
 export const postAnswers = async(
-    payload: any):Promise<AnswerResponse> => {
+    payload: AnswerPayload):Promise<AnswerResponse> => {
         const res = await fetch(`${API_URL}/answers`,{
         method: "POST",
         headers: {"Content-Type": "application/json"},

@@ -36,5 +36,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# OS
-.DS_Storedir .gitignore
+#OS
+Thumbs.db
+desktop.ini
+.gitignore
