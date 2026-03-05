@@ -1,4 +1,4 @@
-export const question = [
+export const questions = [
     {number:1,content:"機械や道具を扱うことが得意だと思う。",type:"D",answer:0},
     {number:2,content:"体を動かす仕事が好きだ。",type:"D",answer:0},
     {number:3,content : "実際に手を動かして覚える方が早いと思う。",type:"D",answer:0},
