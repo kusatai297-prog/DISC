@@ -10,7 +10,7 @@
 
 # 6.2 画面レイアウト
 
-※レイアウトは画像参照（DISC診断画面）
+![](images/DISCdiagnose.png)
 
 ---
 
