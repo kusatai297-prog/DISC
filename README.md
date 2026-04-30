@@ -15,31 +15,34 @@ DISCタイプ（D / I / S / C）のうち、どのタイプであるかを診断
 ## ディレクトリ構成
 
 ```
+職業診断
 .
-├── backend
-│   ├── api
-|   |    ├── main.py
-|   |    └── question.py
-│   ├── tests ── test_backend_DISC.py
-|   └── Dockerfile
-├── frontend
-│   ├── app 
-|   |    ├── page.tsx
-|   |    └── result ── [type] 
-|   |                    ├── page.tsx
-|   |                    ├── ErrorView.tsx
-|   |                    └── ResultView.tsx
-|   ├── components
-|   |       ├── Question.tsx
-|   |       └── RatingButton.tsx
-|   ├── hooks ── useDiagnosis.tsx
-|   ├── lib ── postAnswers.tsx
-|   ├── Dockerfile
-│   └── package.json
-|── README.md
-|
-|
-└── docker-compose.yml
+└─ DISC
+    .
+    ├── backend
+    │   ├── api
+    |   |    ├── main.py
+    |   |    └── question.py
+    │   ├── tests ── test_backend_DISC.py
+    |   └── Dockerfile
+    ├── frontend
+    │   ├── app 
+    |   |    ├── page.tsx
+    |   |    └── result ── [type] 
+    |   |                    ├── page.tsx
+    |   |                    ├── ErrorView.tsx
+    |   |                    └── ResultView.tsx
+    |   ├── components
+    |   |       ├── Question.tsx
+    |   |       └── RatingButton.tsx
+    |   ├── hooks ── useDiagnosis.tsx
+    |   ├── lib ── postAnswers.tsx
+    |   ├── Dockerfile
+    │   └── package.json
+    |── README.md
+    |
+    |
+    └── docker-compose.yml
 ```
 
 ---

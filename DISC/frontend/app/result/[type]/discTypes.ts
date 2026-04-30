@@ -9,7 +9,7 @@ export const RISC_TYPES = {
         },
         {
             title: "大工",
-            description: "建物や家具を自分の手で作る大工は、Rタイプにぴったりの職業です。"
+            description: "建物や家具を自分の手で作る大工は、Dタイプにぴったりの職業です。"
         }]
     },
     I: {
